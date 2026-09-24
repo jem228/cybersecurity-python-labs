@@ -2,11 +2,10 @@ from labs.lab01.task1 import main as task1_main
 from labs.lab01.task2 import main as task2_main
 from labs.lab01.task3 import main as task3_main
 from shared.student import (
-    STUDENT_NAME,
     GROUP_NAME,
+    STUDENT_NAME,
     VARIANT_NUMBER,
 )
-
 
 
 def main():

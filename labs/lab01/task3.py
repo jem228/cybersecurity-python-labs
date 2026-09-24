@@ -11,8 +11,6 @@ from shared.student import (
     VARIANT_NUMBER,
 )
 
-
-# Сіль формується з номера варіанта
 SALT = str(VARIANT_NUMBER).zfill(5)
 MIN_LENGTH = 9
 
@@ -78,7 +76,7 @@ def log_event(func):
     return wrapper
 
 
-def generate_hash(password: str, salt: str = None) -> str:
+def generate_hash(password: str, salt: str | None = None) -> str:
     try:
         if password is None or salt is None:
             raise ValueError("Пароль або сіль не можуть бути None")
@@ -98,7 +96,8 @@ def generate_hash(password: str, salt: str = None) -> str:
 
         return sha1_hash.hexdigest()
 
-    except (ValueError, ValidationError):
+    except (ValueError, ValidationError) as error:
+        print(f"Помилка генерації хешу: {error}")
         raise
 
 
@@ -110,7 +109,8 @@ def create_user(username, password):
         hash_value = generate_hash(password, salt=SALT)
         return username, hash_value
 
-    except (ValueError, ValidationError):
+    except (ValueError, ValidationError) as error:
+        print(f"Помилка створення користувача: {error}")
         raise
 
 
@@ -138,7 +138,7 @@ def create_users(users_list):
                         f"користувача [{username}]: {error}"
                     )
 
-    except (OSError, IOError) as error:
+    except OSError as error:
         print(f"Помилка роботи з CSV-файлом: {error}")
         raise
 
@@ -162,7 +162,7 @@ def read_users_db():
                 if row:
                     users_db.append(row)
 
-    except (OSError, IOError, csv.Error) as error:
+    except (OSError, csv.Error) as error:
         print(f"Помилка читання бази користувачів: {error}")
         raise
 
@@ -204,7 +204,8 @@ def login(username: str, password: str) -> bool:
 
         return False
 
-    except (ValueError, IOError, OSError):
+    except (ValueError, OSError) as error:
+        print(f"Помилка авторизації: {error}")
         raise
 
 
@@ -286,7 +287,7 @@ def main():
     except PermissionError:
         print("Немає прав доступу до файлу")
 
-    except IOError:
+    except OSError:
         print("Проблема з читанням файлу на диск")
 
     except ValueError as error:
