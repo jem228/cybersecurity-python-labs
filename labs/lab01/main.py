@@ -17,17 +17,14 @@ def main():
     print(f"Група: {GROUP_NAME}")
     print(f"Варіант: {VARIANT_NUMBER}")
 
-    
     print("\nTask 1")
     print("-" * 100)
     task1_main()
 
-    
     print("\nTask 2")
     print("-" * 100)
     task2_main()
 
-    
     print("\nTask 3")
     print("-" * 100)
     task3_main()

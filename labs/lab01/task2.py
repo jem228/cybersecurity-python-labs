@@ -117,16 +117,9 @@ def check_all_access():
             )
 
             if result == "ALLOW":
-                print(
-                    f"user={username} "
-                    f"resource={resource_name} -> ALLOW"
-                )
+                print(f"user={username} resource={resource_name} -> ALLOW")
             else:
-                print(
-                    f"user={username} "
-                    f"resource={resource_name} "
-                    f"-> DENY ({reason})"
-                )
+                print(f"user={username} resource={resource_name} -> DENY ({reason})")
 
 
 def main():

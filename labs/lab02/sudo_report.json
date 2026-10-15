@@ -1,0 +1,168 @@
+{
+    "source_file": "labs\\lab02\\data\\data_v15\\sudo.log",
+    "total_parsed": 12,
+    "total_unparsed": 0,
+    "root_commands_count": 10,
+    "root_commands": [
+        {
+            "timestamp": "2026-09-27T08:10:00+03:00",
+            "host": "host01",
+            "user": "alice",
+            "tty": "pts/0",
+            "pwd": "/home/alice",
+            "target_user": "root",
+            "command": "/usr/bin/apt update"
+        },
+        {
+            "timestamp": "2026-09-27T08:15:00+03:00",
+            "host": "host01",
+            "user": "alice",
+            "tty": "pts/0",
+            "pwd": "/home/alice",
+            "target_user": "root",
+            "command": "/usr/bin/systemctl restart nginx"
+        },
+        {
+            "timestamp": "2026-09-27T09:20:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/chmod 777 /srv/share"
+        },
+        {
+            "timestamp": "2026-09-27T09:30:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/nc -lvp 4444"
+        },
+        {
+            "timestamp": "2026-09-27T09:32:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/nmap -sS 10.0.0.0/24"
+        },
+        {
+            "timestamp": "2026-09-27T10:00:00+03:00",
+            "host": "host01",
+            "user": "dave",
+            "tty": "pts/3",
+            "pwd": "/home/dave",
+            "target_user": "root",
+            "command": "/usr/bin/dd if=/dev/zero of=/tmp/test.img bs=1M count=10"
+        },
+        {
+            "timestamp": "2026-09-27T10:10:00+03:00",
+            "host": "host01",
+            "user": "dave",
+            "tty": "pts/3",
+            "pwd": "/etc",
+            "target_user": "root",
+            "command": "/usr/bin/vim /etc/shadow"
+        },
+        {
+            "timestamp": "2026-09-27T11:30:00+03:00",
+            "host": "host01",
+            "user": "alice",
+            "tty": "pts/0",
+            "pwd": "/var/log",
+            "target_user": "root",
+            "command": "/usr/bin/tail -n 100 /var/log/syslog"
+        },
+        {
+            "timestamp": "2026-09-27T12:00:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/chmod 777 /tmp/public"
+        },
+        {
+            "timestamp": "2026-09-27T12:05:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/nc 203.0.113.10 9001"
+        }
+    ],
+    "suspicious_commands_count": 7,
+    "suspicious_commands": [
+        {
+            "timestamp": "2026-09-27T09:20:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/chmod 777 /srv/share"
+        },
+        {
+            "timestamp": "2026-09-27T09:30:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/nc -lvp 4444"
+        },
+        {
+            "timestamp": "2026-09-27T09:32:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/nmap -sS 10.0.0.0/24"
+        },
+        {
+            "timestamp": "2026-09-27T10:00:00+03:00",
+            "host": "host01",
+            "user": "dave",
+            "tty": "pts/3",
+            "pwd": "/home/dave",
+            "target_user": "root",
+            "command": "/usr/bin/dd if=/dev/zero of=/tmp/test.img bs=1M count=10"
+        },
+        {
+            "timestamp": "2026-09-27T10:10:00+03:00",
+            "host": "host01",
+            "user": "dave",
+            "tty": "pts/3",
+            "pwd": "/etc",
+            "target_user": "root",
+            "command": "/usr/bin/vim /etc/shadow"
+        },
+        {
+            "timestamp": "2026-09-27T12:00:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/chmod 777 /tmp/public"
+        },
+        {
+            "timestamp": "2026-09-27T12:05:00+03:00",
+            "host": "host01",
+            "user": "carol",
+            "tty": "pts/2",
+            "pwd": "/tmp",
+            "target_user": "root",
+            "command": "/usr/bin/nc 203.0.113.10 9001"
+        }
+    ],
+    "suspicious_by_user": {
+        "carol": 5,
+        "dave": 2
+    }
+}

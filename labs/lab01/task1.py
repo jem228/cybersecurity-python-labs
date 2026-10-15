@@ -44,9 +44,7 @@ def check_password(password, all_passwords):
     has_digit = any(char in string.digits for char in password)
     has_upper = any(char.isupper() for char in password)
     has_lower = any(char.islower() for char in password)
-    has_special = any(
-        char in string.punctuation for char in password
-    )
+    has_special = any(char in string.punctuation for char in password)
 
     if password in forbidden_passwords or len(password) < min_length:
         return "Заборонений"
@@ -93,23 +91,13 @@ def print_results(results):
     print(f"Варіант: {VARIANT_NUMBER}")
 
     print("-" * 100)
-    print(
-        f"{'№':<4}"
-        f"{'Пароль':<25}"
-        f"{'Довжина':<10}"
-        f"{'Результат':<20}"
-    )
+    print(f"{'№':<4}{'Пароль':<25}{'Довжина':<10}{'Результат':<20}")
     print("-" * 100)
 
     for number, result in enumerate(results, start=1):
         password, level = result
 
-        print(
-            f"{number:<4}"
-            f"{password:<25}"
-            f"{len(password):<10}"
-            f"{level:<20}"
-        )
+        print(f"{number:<4}{password:<25}{len(password):<10}{level:<20}")
 
     print("-" * 75)
 
