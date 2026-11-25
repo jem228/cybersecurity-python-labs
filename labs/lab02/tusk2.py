@@ -1,5 +1,3 @@
-"""Analyze sudo logs and detect potentially suspicious commands."""
-
 import argparse
 import json
 import logging
@@ -22,7 +20,6 @@ DEFAULT_ALERT_COMMANDS = [
 
 
 def parse_arguments():
-    """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
         description="Analyze sudo logs and detect suspicious commands."
     )
@@ -53,7 +50,6 @@ def parse_arguments():
 
 
 def parse_sudo_line(line):
-    """Parse one sudo log line."""
     pattern = (
         r"^(?P<timestamp>\S+)\s+"
         r"(?P<host>\S+)\s+sudo:\s*"
@@ -78,7 +74,6 @@ def parse_sudo_line(line):
 
 
 def is_suspicious(command, alert_commands):
-    """Check whether a command matches a suspicious pattern."""
     command_lower = command.lower()
 
     return any(
@@ -89,7 +84,6 @@ def is_suspicious(command, alert_commands):
 
 
 def analyze_log(log_path, alert_commands):
-    """Analyze the log and collect root and suspicious command records."""
     root_commands = []
     suspicious_commands = []
     suspicious_by_user = Counter()
@@ -138,7 +132,6 @@ def analyze_log(log_path, alert_commands):
 
 
 def main():
-    """Run the sudo log analyzer."""
     args = parse_arguments()
 
     logging.basicConfig(

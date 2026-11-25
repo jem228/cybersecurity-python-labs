@@ -233,3 +233,13 @@ class UserAccount:
             return self.user.role
 
         raise KeyError(key)
+
+    def setitem(self, key, value):
+        if key == "username":
+            self.user.username = value
+            
+        elif key == "role":
+            self.user.role = value
+            
+        else:
+            raise KeyError(key)

@@ -1,47 +1,76 @@
-## Pizza-Site
+## Лабораторна робота №2 — Python Security Lab
 
-Pizza-Site is a site dedicated to delicious pizza! Users can browse the menu, learn about products, place orders and leave reviews.
+# Номер варіанта: 15
 
-# Table of Contents
+# Зміст
 
--[Technology](#Technology)
+- [Встановити залежності](#встановити-залежності)
+- [Структура файлів](#структура-файлів)
+- [Приклади запуску demo й analyze](#приклади-запуску-demo-й-analyze)
+- [Опис параметрів CLI](#опис-параметрів-cli)
+- [Поведінка при помилках](#поведінка-при-помилках)
+- [Автор](#автор)
 
--[Home](#Home)
+# Встановити залежності
 
--[Menu](#Menu)
+* Активувати віртуальне середовище:
 
--[Team](#Team)
+.\.venv\Scripts\Activate.ps1
+* Встановити залежності проєкту:
 
--[Contacts](#contacts)
+python -m pip install -r requirements.txt
+* Якщо Ruff ще не встановлено, виконати команду:
 
--[Reviews](#Reviews)
+python -m pip install ruff
+# Структура файлів
 
-# Technologies
--HTML
--CSS
--JavaScript 
-# Home
-05/12/2025
+labs/lab02/
+- README.md
+- main.py
+- tusk1.py
+- tusk2.py
+- data/
+- data_v15/
+- sudo.log
+- sudo_report.json
 
-# Menu
+# Приклади запуску demo й analyze
 
- Margherita: (tomato sauce, mozzarella, basil) - 456.31 UAH
+* Demo — демонстрація першого завдання
 
-* Pepperoni: (tomato sauce, mozzarella, pepperoni) - 497.77 UAH
+python -m labs.lab02.main
+*Analyze — аналіз журналу команд sudo
 
-* Four cheeses: (mozzarella, gorgonzola, parmesan, provolone) - 580.75 UAH
+python -m labs.lab02.tusk2
+ * Перегляд доступних параметрів analyze
 
-* Hawaii: (tomato sauce, mozzarella, ham, pineapple) - 580.75 UAH
 
-# Team
--Author: [Andriy](#https://github.com/alsquin)
+python -m labs.lab02.tusk2 --help
+* Приклад запуску analyze з параметрами
 
--Author: [Volodya](#htttps://github.com/jem228)
+python -m labs.lab02.tusk2 --sudo-log labs/lab02/data/data_v15/sudo.log --alert-commands "chmod 777,nc,nmap" --out-json labs/lab02/report.json --log-level DEBUG
 
-# Contacts
-Andriy +23975856856
+# Опис параметрів CLI
 
-Volodya +15436363519
+- --sudo-log — шлях до файлу журналу sudo.log.
+  - За замовчуванням: labs/lab02/data/data_v15/sudo.log.
+- --alert-commands — список команд, які потрібно вважати підозрілими. 
+  - За замовчуванням: chmod 777,nc,nmap,dd,/etc/shadow.
+- --out-json — шлях до JSON-файлу, .
+  - За замовчуванням: labs/lab02/sudo_report.json.
+- --log-level — рівень деталізації повідомлень журналювання.
+  - Доступні значення: DEBUG, INFO, WARNING, ERROR.
+  - За замовчуванням: INFO.
+- --help — показує довідку щодо доступних параметрів.
 
-# Reviews
-None yet
+# Поведінка при помилках
+
+- Якщо вхідний файл журналу не знайдено, програма повідомляє про помилку та завершує роботу з кодом 1.
+- Якщо запис журналу має неправильний формат, він не обробляється як коректний запис.
+- Якщо задано неправильний рівень журналювання, програма повідомляє про помилку параметрів командного рядка.
+- Якщо виникає помилка під час читання журналу або запису JSON-звіту, програма повідомляє про неї.
+- Якщо підозрілих команд не виявлено, звіт містить порожній список таких команд.
+
+# Автор
+
+- Автор: [Volodya](https://github.com/jem228)

@@ -7,7 +7,6 @@ from labs.lab02.tusk1 import (
 
 
 def demo():
-    """Demonstrate user accounts, permissions and audit logging."""
     print("=== Демонстрація завдання 1 ===")
 
     user = User("student", "student@example.com")
@@ -19,7 +18,8 @@ def demo():
     try:
         user.email = "invalid-email"
     except ValueError as error:
-        print("Перевірка email:", error)
+        print(f"ValueError: {error}")
+
 
     admin = Admin("admin", "admin@example.com")
     admin.grant_permission("manage_users")

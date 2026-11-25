@@ -1,1 +1,5 @@
 ruff
+
+fastapi
+uvicorn
+pydantic
